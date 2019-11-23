@@ -112,5 +112,6 @@ void SerialHandler::WriteChar(char c){
 }
 
 void SerialHandler::WriteSync(QString data){
+    qDebug() << "Writing: " << data;
     serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
