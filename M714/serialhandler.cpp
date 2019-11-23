@@ -34,6 +34,7 @@ void SerialHandler::ConfigureSerialPort(){
 void SerialHandler::DataReady(){
     if(serialPort.canReadLine()){
         QByteArray retData = serialPort.readAll();
+        qDebug() << retData;
         //ParseData(QString(retData));
         if(ParseDataLine(QString(retData))){
             emit ParsedData();
@@ -46,9 +47,9 @@ void SerialHandler::DataReady(){
             qDebug() << "Received Ack";
             emit ReceivedAck();
         }
-        else{
+        /*else{
             qDebug() << "Serial handler received bad data: " << retData;
-        }
+        }*/
     }
 }
 
@@ -80,7 +81,7 @@ bool SerialHandler::ParseDataLine(QString dataLine){
         data->SetNORatio(fields.at(17).toFloat());
         data->SetSystemTemperature(fields.at(18).toFloat());
         data->SetSystemHumidity(fields.at(19).toFloat());
-        qDebug() << "Date Time: " << (fields.at(20) + " " + fields.at(21)) << " Format: " << "dd/MM/yyhh:mm:ss";
+        //qDebug() << "Date Time: " << (fields.at(20) + " " + fields.at(21)) << " Format: " << "dd/MM/yyhh:mm:ss";
         data->SetDateTime(QDateTime::fromString(fields.at(20) + " " + fields.at(21), "dd/MM/yyhh:mm:ss"));
         data->SetMode(fields.at(22).toInt());
 

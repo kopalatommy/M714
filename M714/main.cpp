@@ -28,9 +28,11 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
     }
 
     QFile outFile("Model714.log");
-    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
-    QTextStream ts(&outFile);
-    ts << txt << endl;
+    if(outFile.open(QIODevice::WriteOnly | QIODevice::Append)){
+        outFile.write(txt.toStdString().c_str());
+        outFile.write(QByteArray().append('\n'));
+        outFile.close();
+    }
 }
 
 int main(int argc, char *argv[])
