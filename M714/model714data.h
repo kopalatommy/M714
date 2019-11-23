@@ -2,6 +2,7 @@
 #define MODEL714DATA_H
 
 #include <QDateTime>
+#include <QDebug>
 
 #define O3_FLOW_HIGH_LIMIT 55
 #define O3_FLOW_LOW_LIMIT 45
@@ -69,6 +70,7 @@ public:
 
     QDateTime GetDateTime();
     void SetDateTime(QDateTime);
+    void SetDateTime(QString);
 
     QString GetDiagnosticString(int index);
 

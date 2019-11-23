@@ -80,7 +80,8 @@ bool SerialHandler::ParseDataLine(QString dataLine){
         data->SetNORatio(fields.at(17).toFloat());
         data->SetSystemTemperature(fields.at(18).toFloat());
         data->SetSystemHumidity(fields.at(19).toFloat());
-        data->SetDateTime(QDateTime::fromString(fields.at(20) + fields.at(21)));
+        qDebug() << "Date Time: " << (fields.at(20) + " " + fields.at(21));
+        data->SetDateTime(QDateTime::fromString(fields.at(20) + " " + fields.at(21)));
         data->SetMode(fields.at(22).toInt());
 
         return true;

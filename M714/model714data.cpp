@@ -130,6 +130,10 @@ void Model714Data::SetDateTime(QDateTime d){
     if(d.date().year() < 2000) d.addYears(100);
     serial_dateTime = d;
 }
+void Model714Data::SetDateTime(QString s){
+    qDebug() << "Received: " << s << " for data and time";
+    serial_dateTime = QDateTime::fromString(s);
+}
 
 float Model714Data::GetO3Intensity(){
     return o3_intensity;
