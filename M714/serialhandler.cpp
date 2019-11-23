@@ -34,7 +34,7 @@ void SerialHandler::ConfigureSerialPort(){
 void SerialHandler::DataReady(){
     if(serialPort.canReadLine()){
         QByteArray retData = serialPort.readAll();
-        qDebug() << retData;
+        //qDebug() << retData;
         //ParseData(QString(retData));
         if(ParseDataLine(QString(retData))){
             emit ParsedData();
