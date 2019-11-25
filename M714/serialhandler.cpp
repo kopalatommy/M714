@@ -132,13 +132,13 @@ void SerialHandler::WriteSync(QString data){
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
 
-/*void SerialHandler::WriteMessage(QString data){
+void SerialHandler::WriteMessage(QString data){
     WriteChar('R');
     tempMessage = data;
     QTimer::singleShot(2000, this, SLOT(OnMessageTimeout()));
-}*/
+}
 
-/*void SerialHandler::OnMessageTimeout(){
+void SerialHandler::OnMessageTimeout(){
     double checksum = 0;
     QByteArray array = tempMessage.toLocal8Bit();
 
@@ -156,27 +156,6 @@ void SerialHandler::WriteSync(QString data){
     for(int i = 0; i < tempMessage.length(); i++){
         WriteChar(tempMessage.at(i).toLatin1());
         //I::msleep(5);
-        QThread::msleep(5);
-    }
-}*/
-
-void SerialHandler::WriteFullMessage(QString data){
-    double checksum = 0;
-    QByteArray array = data.toLocal8Bit();
-
-    WriteChar('R');
-
-    for(int i = 0; i < array.length(); i++) checksum += array.at(i);
-    checksum /= 8;
-
-    qDebug() << "Message: " << data << " Checksum: " << checksum;
-
-    data.append("%").append(QString::number(checksum, 'f', 2)).append("\n\r");
-
-    QThread::sleep(2);
-
-    for(int i = 0; i < data.length(); i++){
-        WriteChar(data.at(i).toLatin1());
         QThread::msleep(5);
     }
 }
