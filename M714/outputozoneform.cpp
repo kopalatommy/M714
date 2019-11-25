@@ -45,8 +45,7 @@ OutputOzoneForm::~OutputOzoneForm(){
 
 void OutputOzoneForm::StartSequence(float ozoneSetting){
     ui->BlockingLabel->show();
-    //SerialHandler::GetInstance()->WriteSync("OZO," + QString::number(static_cast<double>(ozoneSetting)));
-    SerialHandler::GetInstance()->WriteFullMessage("OZO," + QString::number(static_cast<double>(ozoneSetting)));
+    SerialHandler::GetInstance()->WriteSync("OZO," + QString::number(static_cast<double>(ozoneSetting)));
     connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputOzoneForm::ReceivedAck);
 
     //QTimer::singleShot(timeoutMSec, this, &OutputOzoneForm::CloseWaitLabel);
