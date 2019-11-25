@@ -5,6 +5,7 @@
 #include <QSerialPort>
 #include <QDebug>
 #include <QThread>
+#include <QTimer>
 
 #include "model714data.h"
 
@@ -33,6 +34,8 @@ signals:
 private slots:
     void DataReady();
 
+    void OnMessageTimeout();
+
 private:
     static SerialHandler * instance;
     SerialHandler();
@@ -45,6 +48,7 @@ private:
     //void ParseData(QString data);
     bool ParseDataLine(QString dataLine);
 
+    QString tempMessage = "";
 };
 
 #endif // SERIALHANDLER_H
