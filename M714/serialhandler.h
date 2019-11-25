@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QSerialPort>
 #include <QDebug>
+#include <QThread>
 
 #include "model714data.h"
 

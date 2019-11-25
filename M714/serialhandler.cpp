@@ -113,9 +113,21 @@ void SerialHandler::WriteChar(char c){
 }
 
 void SerialHandler::WriteSync(QString data){
+    QByteArray array = data.toLocal8Bit();
+    double checksum = 0;
+
+    for (int i = 0; i < array.length(); i++) {
+        checksum += array.at(i);
+    }
+    checksum /= 8;
+
+    qDebug() << "Checksum: " << checksum;
+    data.append("%").append(QString::number(checksum, 'f', 2)).append("\n\r");
+
     qDebug() << "Writing: " << data;
     for(int i = 0; i < data.count(); i++){
         WriteChar(data.at(i).toLatin1());
+        QThread::msleep(5);
     }
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
