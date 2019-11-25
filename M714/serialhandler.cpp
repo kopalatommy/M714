@@ -131,3 +131,9 @@ void SerialHandler::WriteSync(QString data){
     }
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
+
+void SerialHandler::WriteMessage(QString data){
+    WriteChar('R');
+    QThread::sleep(1);
+    WriteSync(data);
+}

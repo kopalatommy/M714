@@ -23,6 +23,13 @@ public:
 
     void StartSequence(float ozoneSetting);
 
+public slots:
+
+signals:
+    void TimedOut();
+    void ReceivedError();
+    void CloseAll();
+
 private slots:
     void CloseWaitLabel();
     void ReceivedAck();

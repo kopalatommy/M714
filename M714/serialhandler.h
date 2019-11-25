@@ -20,8 +20,9 @@ public:
     static SerialHandler * GetInstance();
 
 public slots:
-    void WriteSync(QString dat);
+    void WriteSync(QString data);
     void WriteChar(char c);
+    void WriteMessage(QString data);
 
 signals:
     void ReceivedNewData(QString);

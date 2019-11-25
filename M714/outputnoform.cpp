@@ -7,6 +7,8 @@ OutputNOForm::OutputNOForm(QWidget *parent) :
 {
     ui->setupUi(this);
     SetUpUI();
+
+
 }
 
 OutputNOForm::~OutputNOForm()

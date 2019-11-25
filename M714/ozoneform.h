@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDebug>
+#include <QMessageBox>
 
 #include "outputozoneform.h"
 
@@ -22,12 +23,13 @@ public:
 
 private slots:
     void on_increaseO3Button_clicked();
-
     void on_decreaseO3Button_clicked();
 
     void on_startButton_clicked();
-
     void on_cancelButton_clicked();
+
+    void OutputTimeout();
+    void OutputError();
 
 private:
     Ui::OzoneForm *ui;
