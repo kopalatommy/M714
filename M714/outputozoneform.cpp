@@ -35,7 +35,8 @@ void OutputOzoneForm::SetUpUI(){
     //connect(disable_buttons_timer, &QTimer::timeout, this, &OutputOzone::disable_buttons_timer_end);
     ui->quitButton->setEnabled(false);
 
-    QTimer::singleShot(6500, this, &OutputOzoneForm::OnDisableButtonsTimeout);
+    //QTimer::singleShot(6500, this, &OutputOzoneForm::OnDisableButtonsTimeout);
+    QTimer::singleShot(6500, this, SLOT(OnDisableButtonsTimeout()));
 }
 
 OutputOzoneForm::~OutputOzoneForm(){
@@ -47,7 +48,8 @@ void OutputOzoneForm::StartSequence(float ozoneSetting){
     SerialHandler::GetInstance()->WriteSync("OZO," + QString::number(static_cast<double>(ozoneSetting)));
     connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputOzoneForm::ReceivedAck);
 
-    QTimer::singleShot(timeoutMSec, this, &OutputOzoneForm::CloseWaitLabel);
+    //QTimer::singleShot(timeoutMSec, this, &OutputOzoneForm::CloseWaitLabel);
+    QTimer::singleShot(timeoutMSec, this, SLOT(CloseWaitLabel()));
 }
 
 void OutputOzoneForm::CloseWaitLabel(){
