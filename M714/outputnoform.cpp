@@ -37,7 +37,8 @@ void OutputNOForm::SetUpUI(){
     ui->DiagRight->setStyleSheet("border:none;");
     ui->quitButton->setEnabled(false);
 
-    QTimer::singleShot(6500, this, &OutputNOForm::OnDisableButtonTimeout);
+    //QTimer::singleShot(6500, this, &OutputNOForm::OnDisableButtonTimeout);
+    QTimer::singleShot(6500, this, SLOT(OnDisableButtonTimeout()));
 }
 
 void OutputNOForm::OnDisableButtonTimeout(){
@@ -51,7 +52,8 @@ void OutputNOForm::SetNOSetting(double val){
 
     connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
 
-    QTimer::singleShot(timeoutMSec, this, &OutputNOForm::OnWaitTimeout);
+    //QTimer::singleShot(timeoutMSec, this, &OutputNOForm::OnWaitTimeout);
+    QTimer::singleShot(timeoutMSec, this, SLOT(OnWaitTimeout));
 }
 
 void OutputNOForm::OnWaitTimeout(){
