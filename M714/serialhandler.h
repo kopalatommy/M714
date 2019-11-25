@@ -23,7 +23,8 @@ public:
 public slots:
     void WriteSync(QString data);
     void WriteChar(char c);
-    void WriteMessage(QString data);
+    //void WriteMessage(QString data);
+    void WriteFullMessage(QString data);
 
 signals:
     void ReceivedNewData(QString);
@@ -34,7 +35,7 @@ signals:
 private slots:
     void DataReady();
 
-    void OnMessageTimeout();
+    //void OnMessageTimeout();
 
 private:
     static SerialHandler * instance;

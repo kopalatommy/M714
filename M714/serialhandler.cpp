@@ -132,22 +132,19 @@ void SerialHandler::WriteSync(QString data){
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
 
-void SerialHandler::WriteMessage(QString data){
+/*void SerialHandler::WriteMessage(QString data){
     WriteChar('R');
-    //QThread::sleep(1);
-    //WriteSync(data);
-
     tempMessage = data;
     QTimer::singleShot(2000, this, SLOT(OnMessageTimeout()));
-}
+}*/
 
-void SerialHandler::OnMessageTimeout(){
+/*void SerialHandler::OnMessageTimeout(){
     double checksum = 0;
     QByteArray array = tempMessage.toLocal8Bit();
+
     for(int i = 0; i < array.length(); i++){
         char a = array.at(i);
         checksum += a;
-       // qDebug()<<"QtChecksum_"<<i<<":"<<checksum;
     }
     checksum /= 8;
     qDebug() << "QtTotalChecksum: " << checksum;
@@ -157,15 +154,29 @@ void SerialHandler::OnMessageTimeout(){
 
     qDebug() << "Sent this whole string: " << tempMessage;
     for(int i = 0; i < tempMessage.length(); i++){
-        /*QString partOfMessage = tempMessage.at(i);
-        SerialHandler::GetInstance()->writeSyncBytes(&partOfMessage);*/
         WriteChar(tempMessage.at(i).toLatin1());
         //I::msleep(5);
         QThread::msleep(5);
     }
-    //serialHandler->writeSyncBytes(&messageToSend);
-    //disconnect(command_timer, &QTimer::timeout, this, &MainWindow::on_msgTimerDone);
+}*/
 
-    //connect(command_timer, &QTimer::timeout, this, &MainWindow::on_cmdTimerDone);
-    //command_timer->start(1000);
+void SerialHandler::WriteFullMessage(QString data){
+    double checksum = 0;
+    QByteArray array = data.toLocal8Bit();
+
+    WriteChar('R');
+
+    for(int i = 0; i < array.length(); i++) checksum += array.at(i);
+    checksum /= 8;
+
+    qDebug() << "Message: " << data << " Checksum: " << checksum;
+
+    data.append("%").append(QString::number(checksum, 'f', 2)).append("\n\r");
+
+    QThread::sleep(2);
+
+    for(int i = 0; i < data.length(); i++){
+        WriteChar(data.at(i).toLatin1());
+        QThread::msleep(5);
+    }
 }
