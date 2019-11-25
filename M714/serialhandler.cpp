@@ -108,10 +108,14 @@ bool SerialHandler::ParseDataLine(QString dataLine){
 }*/
 
 void SerialHandler::WriteChar(char c){
+    qDebug() << "Writing char: " << c;
     serialPort.write(QByteArray().append(c));
 }
 
 void SerialHandler::WriteSync(QString data){
     qDebug() << "Writing: " << data;
-    serialPort.write(data.toLocal8Bit().constData(), data.length());
+    for(int i = 0; i < data.count(); i++){
+        WriteChar(data.at(i).toLatin1());
+    }
+    //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }
