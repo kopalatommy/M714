@@ -21,7 +21,7 @@ void OutputNO2Form::SetupUI(){
     ui->scrollRightButton->setStyleSheet("border:none;");
 
     ui->quitButton->setEnabled(false);
-    QTimer::singleShot(6500, this, &OutputNO2Form::OnDisableButtonsTimerEnd);
+    QTimer::singleShot(6500, this, SLOT(OnDisableButtonsTimerEnd()));
 }
 
 void OutputNO2Form::OnDisableButtonsTimerEnd(){
