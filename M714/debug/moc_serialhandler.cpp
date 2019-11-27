@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SerialHandler_t {
     QByteArrayData data[12];
-    char stringdata0[125];
+    char stringdata0[147];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,16 +39,16 @@ QT_MOC_LITERAL(4, 45, 11), // "ReceivedAck"
 QT_MOC_LITERAL(5, 57, 10), // "ParsedData"
 QT_MOC_LITERAL(6, 68, 9), // "WriteChar"
 QT_MOC_LITERAL(7, 78, 1), // "c"
-QT_MOC_LITERAL(8, 80, 12), // "WriteMessage"
-QT_MOC_LITERAL(9, 93, 4), // "data"
-QT_MOC_LITERAL(10, 98, 9), // "DataReady"
-QT_MOC_LITERAL(11, 108, 16) // "OnMessageTimeout"
+QT_MOC_LITERAL(8, 80, 17), // "WriteMessage_loop"
+QT_MOC_LITERAL(9, 98, 9), // "DataReady"
+QT_MOC_LITERAL(10, 108, 16), // "OnMessageTimeout"
+QT_MOC_LITERAL(11, 125, 21) // "OnMessageTimeout_loop"
 
     },
     "SerialHandler\0ReceivedNewData\0\0"
     "ReceivedError\0ReceivedAck\0ParsedData\0"
-    "WriteChar\0c\0WriteMessage\0data\0DataReady\0"
-    "OnMessageTimeout"
+    "WriteChar\0c\0WriteMessage_loop\0DataReady\0"
+    "OnMessageTimeout\0OnMessageTimeout_loop"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +58,7 @@ static const uint qt_meta_data_SerialHandler[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,16 +66,17 @@ static const uint qt_meta_data_SerialHandler[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x06 /* Public */,
-       3,    0,   57,    2, 0x06 /* Public */,
-       4,    0,   58,    2, 0x06 /* Public */,
-       5,    0,   59,    2, 0x06 /* Public */,
+       1,    1,   59,    2, 0x06 /* Public */,
+       3,    0,   62,    2, 0x06 /* Public */,
+       4,    0,   63,    2, 0x06 /* Public */,
+       5,    0,   64,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   60,    2, 0x0a /* Public */,
-       8,    1,   63,    2, 0x0a /* Public */,
-      10,    0,   66,    2, 0x08 /* Private */,
-      11,    0,   67,    2, 0x08 /* Private */,
+       6,    1,   65,    2, 0x0a /* Public */,
+       8,    0,   68,    2, 0x0a /* Public */,
+       9,    0,   69,    2, 0x08 /* Private */,
+      10,    0,   70,    2, 0x08 /* Private */,
+      11,    0,   71,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
@@ -85,7 +86,8 @@ static const uint qt_meta_data_SerialHandler[] = {
 
  // slots: parameters
     QMetaType::Void, QMetaType::Char,    7,
-    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -103,9 +105,10 @@ void SerialHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 2: _t->ReceivedAck(); break;
         case 3: _t->ParsedData(); break;
         case 4: _t->WriteChar((*reinterpret_cast< char(*)>(_a[1]))); break;
-        case 5: _t->WriteMessage((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 5: _t->WriteMessage_loop(); break;
         case 6: _t->DataReady(); break;
         case 7: _t->OnMessageTimeout(); break;
+        case 8: _t->OnMessageTimeout_loop(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -170,13 +173,13 @@ int SerialHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

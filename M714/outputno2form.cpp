@@ -30,7 +30,7 @@ void OutputNO2Form::OnDisableButtonsTimerEnd(){
 
 void OutputNO2Form::OnWaitLabelTimeoutEnd(){
     if(!ui->blockingLabel->isHidden()){
-        SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+        SerialHandler::GetInstance()->WriteCommand("IDL,0000");
         qDebug() << "Failed to close blocking label. Current timeout is " << timeoutMSec << " msecs";
         ui->blockingLabel->hide();
         close();
@@ -51,7 +51,7 @@ void OutputNO2Form::StartSequence(double noSetting, double ozoneSetting, double 
 
 void OutputNO2Form::on_quitButton_clicked(){
     emit CloseAll();
-    SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+    SerialHandler::GetInstance()->WriteCommand("IDL,0000");
     close();
 }
 

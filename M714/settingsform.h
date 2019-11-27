@@ -7,7 +7,7 @@
 
 #define RELEASE_DATE "11/2019"
 #define APP_VERSION "1"
-#define BUILD_NUMBER "7"
+#define BUILD_NUMBER "8"
 
 namespace Ui {
 class SettingsForm;

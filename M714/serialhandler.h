@@ -20,10 +20,15 @@ class SerialHandler : public QObject
 public:
     static SerialHandler * GetInstance();
 
+    void WriteCommand(QStringList lst);
+    void WriteCommand(QString str);
+
 public slots:
     //void WriteSync(QString data);
     void WriteChar(char c);
-    void WriteMessage(QString data);
+    //void WriteMessage(QString data);
+
+    void WriteMessage_loop();
 
 signals:
     void ReceivedNewData(QString);
@@ -35,6 +40,7 @@ private slots:
     void DataReady();
 
     void OnMessageTimeout();
+    void OnMessageTimeout_loop();
 
 private:
     static SerialHandler * instance;
@@ -44,11 +50,14 @@ private:
     int baudRate = 19200;
     QSerialPort serialPort;
 
+
     void ConfigureSerialPort();
     //void ParseData(QString data);
     bool ParseDataLine(QString dataLine);
 
     QString tempMessage = "";
+    QStringList toSend;
+    bool inLoop = false;
 };
 
 #endif // SERIALHANDLER_H

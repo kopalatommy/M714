@@ -11,6 +11,12 @@
 #define NOMarker 'B'
 #define OzoneMarker_no2 'C'
 #define NOMarker_no2 'D'
+#define LOWNOSLOPEMARKER 'E'
+#define LOWNOZEROMARKER 'F'
+#define LOWNOPIDGAINMARKER 'G'
+#define HIGHNOSLOPEMARKER 'H'
+#define HIGHNOZEROMARKER 'I'
+#define HIGHNOPIDGAINMARKER 'J'
 
 class Model714Settings
 {
@@ -29,6 +35,24 @@ public:
     double GetNOOutputNO2();
     void SetNOOutputNO2(double d);
 
+    int GetLowNOSlope();
+    void SetLowNOSlope(int i);
+
+    int GetLowNOZero();
+    void SetLowNOZero(int i);
+
+    int GetLowNOPIDGain();
+    void SetLowNOPIDGain(int i);
+
+    int GetHighNOSlope();
+    void SetHighNOSlope(int i);
+
+    int GetHighNOZero();
+    void SetHighNOZero(int i);
+
+    int GetHighNOPIDGain();
+    void SetHighNOPIDGain(int i);
+
 private:
     Model714Settings();
     static Model714Settings * instance;
@@ -37,6 +61,14 @@ private:
     double noOutput = 0;
     double ozoneOutputNO2 = 0;
     double noOutputNO2 = 0;
+
+    int lowNOSlope = 0;
+    int lowNOZero = 0;
+    int lowNOPIDGain = 0;
+
+    int highNOSlope = 0;
+    int highNOZero = 0;
+    int highNOPIDGain = 0;
 
     void WriteSettingsFile();
     void ReadSettingsFile();

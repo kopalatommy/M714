@@ -84,7 +84,7 @@ void OutputNOForm::UpdateStatusValues(){
 
 void OutputNOForm::StartSequence(float val){
     ui->blockingLabel->show();
-    SerialHandler::GetInstance()->WriteMessage("NIO," + QString::number(static_cast<double>(val)));
+    SerialHandler::GetInstance()->WriteCommand("NIO," + QString::number(static_cast<double>(val)));
     connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
 
     QTimer::singleShot(timeoutMSec, this, SLOT(CloseWaitLabel()));
@@ -98,7 +98,7 @@ void OutputNOForm::ReceivedAck(){
 void OutputNOForm::CloseWaitLabel(){
     if(!ui->blockingLabel->isHidden()){
         disconnect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
-        SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+        SerialHandler::GetInstance()->WriteCommand("IDL,0000");
         qDebug() << "Failed to close blocking label. Current timeout is " << timeoutMSec << " msecs";
         ui->blockingLabel->hide();
         close();
@@ -112,7 +112,7 @@ void OutputNOForm::OnDisableButtonsTimeout(){
 }
 
 void OutputNOForm::on_quitButton_clicked(){
-    SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+    SerialHandler::GetInstance()->WriteCommand("IDL,0000");
     emit CloseAll();
     close();
 }

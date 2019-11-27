@@ -45,7 +45,7 @@ OutputOzoneForm::~OutputOzoneForm(){
 
 void OutputOzoneForm::StartSequence(float ozoneSetting){
     ui->BlockingLabel->show();
-    SerialHandler::GetInstance()->WriteMessage("OZO," + QString::number(static_cast<double>(ozoneSetting)));
+    SerialHandler::GetInstance()->WriteCommand("OZO," + QString::number(static_cast<double>(ozoneSetting)));
     connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputOzoneForm::ReceivedAck);
 
     //QTimer::singleShot(timeoutMSec, this, &OutputOzoneForm::CloseWaitLabel);
@@ -55,7 +55,7 @@ void OutputOzoneForm::StartSequence(float ozoneSetting){
 void OutputOzoneForm::CloseWaitLabel(){
     if(!ui->BlockingLabel->isHidden()){
         disconnect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputOzoneForm::ReceivedAck);
-        SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+        SerialHandler::GetInstance()->WriteCommand("IDL,0000");
         qDebug() << "Failed to close blocking label. Current timeout is " << timeoutMSec << " msecs";
         ui->BlockingLabel->hide();
         close();
@@ -118,7 +118,7 @@ void OutputOzoneForm::OnDisableButtonsTimeout(){
 
 void OutputOzoneForm::on_quitButton_clicked(){
     //Send command to shut off ozone
-    SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+    SerialHandler::GetInstance()->WriteCommand("IDL,0000");
 
     qDebug() << "Sending ozone shutoff";
 

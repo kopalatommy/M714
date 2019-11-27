@@ -51,6 +51,60 @@ void Model714Settings::SetNOOutputNO2(double d){
     WriteSettingsFile();
 }
 
+int Model714Settings::GetLowNOSlope(){
+    return lowNOSlope;
+}
+
+void Model714Settings::SetLowNOSlope(int i){
+    lowNOSlope = i;
+    WriteSettingsFile();
+}
+
+int Model714Settings::GetLowNOZero(){
+    return lowNOZero;
+}
+
+void Model714Settings::SetLowNOZero(int i){
+    lowNOZero = i;
+    WriteSettingsFile();
+}
+
+int Model714Settings::GetLowNOPIDGain(){
+    return lowNOPIDGain;
+}
+
+void Model714Settings::SetLowNOPIDGain(int i){
+    lowNOPIDGain = i;
+    WriteSettingsFile();
+}
+
+int Model714Settings::GetHighNOSlope(){
+    return highNOSlope;
+}
+
+void Model714Settings::SetHighNOSlope(int i){
+    highNOSlope = i;
+    WriteSettingsFile();
+}
+
+int Model714Settings::GetHighNOZero(){
+    return highNOZero;
+}
+
+void Model714Settings::SetHighNOZero(int i){
+    highNOZero = i;
+    WriteSettingsFile();
+}
+
+int Model714Settings::GetHighNOPIDGain(){
+    return highNOPIDGain;
+}
+
+void Model714Settings::SetHighNOPIDGain(int i){
+    highNOPIDGain = i;
+    WriteSettingsFile();
+}
+
 void Model714Settings::ReadSettingsFile(){
     if(QFile::exists(QString(FILENAME))){
         QFile file(QString(FILENAME));
@@ -82,8 +136,32 @@ void Model714Settings::ReadSettingsFile(){
                     noOutputNO2 = QString(temp).toDouble();
                     //qDebug() << "Read in no no2 output: " << noOutputNO2;
                     break;
+                case LOWNOSLOPEMARKER:
+                    temp.remove(0, 1);
+                    lowNOSlope = QString(temp).toInt();
+                    break;
+                case LOWNOZEROMARKER:
+                    temp.remove(0, 1);
+                    lowNOZero = QString(temp).toInt();
+                    break;
+                case LOWNOPIDGAINMARKER:
+                    temp.remove(0, 1);
+                    lowNOPIDGain = QString(temp).toInt();
+                    break;
+                case HIGHNOSLOPEMARKER:
+                    temp.remove(0, 1);
+                    highNOSlope = QString(temp).toInt();
+                    break;
+                case HIGHNOZEROMARKER:
+                    temp.remove(0, 1);
+                    highNOZero = QString(temp).toInt();
+                    break;
+                case HIGHNOPIDGAINMARKER:
+                    temp.remove(0, 1);
+                    highNOPIDGain = QString(temp).toInt();
+                    break;
                 default:
-                    qDebug() << "Read in: " << temp;
+                    qDebug() << "Read in unknown: " << temp;
                     break;
                 }
             }
@@ -107,6 +185,18 @@ void Model714Settings::WriteSettingsFile(){
         file.write(QString(OzoneMarker_no2).append(QString::number(ozoneOutputNO2)).toLocal8Bit());
         file.write("\n");
         file.write(QString(NOMarker_no2).append(QString::number(noOutputNO2)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(LOWNOSLOPEMARKER).append(QString::number(lowNOSlope)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(LOWNOZEROMARKER).append(QString::number(lowNOZero)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(LOWNOPIDGAINMARKER).append(QString::number(lowNOPIDGain)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(HIGHNOSLOPEMARKER).append(QString::number(highNOSlope)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(HIGHNOZEROMARKER).append(QString::number(highNOZero)).toLocal8Bit());
+        file.write("\n");
+        file.write(QString(HIGHNOPIDGAINMARKER).append(QString::number(highNOPIDGain)).toLocal8Bit());
         file.close();
     }
 }

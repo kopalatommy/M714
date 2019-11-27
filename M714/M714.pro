@@ -30,12 +30,14 @@ SOURCES += \
         model714data.cpp \
         model714settings.cpp \
         no2form.cpp \
+        nocalfactorsform.cpp \
         noform.cpp \
         outputno2form.cpp \
         outputnoform.cpp \
         outputozoneform.cpp \
         ozoneform.cpp \
         serialhandler.cpp \
+        setnocalfactorshighform.cpp \
         settingsform.cpp
 
 HEADERS += \
@@ -43,22 +45,26 @@ HEADERS += \
         model714data.h \
         model714settings.h \
         no2form.h \
+        nocalfactorsform.h \
         noform.h \
         outputno2form.h \
         outputnoform.h \
         outputozoneform.h \
         ozoneform.h \
         serialhandler.h \
+        setnocalfactorshighform.h \
         settingsform.h
 
 FORMS += \
         mainwindow.ui \
         no2form.ui \
+        nocalfactorsform.ui \
         noform.ui \
         outputno2form.ui \
         outputnoform.ui \
         outputozoneform.ui \
         ozoneform.ui \
+        setnocalfactorshighform.ui \
         settingsform.ui
 
 # Default rules for deployment.

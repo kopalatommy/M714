@@ -132,13 +132,13 @@ void SerialHandler::WriteChar(char c){
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
 }*/
 
-void SerialHandler::WriteMessage(QString data){
+/*void SerialHandler::WriteMessage(QString data){
     qDebug() << "Writing message: " << data;
 
     WriteChar('R');
     tempMessage = data;
     QTimer::singleShot(2000, this, SLOT(OnMessageTimeout()));
-}
+}*/
 
 void SerialHandler::OnMessageTimeout(){
     double checksum = 0;
@@ -160,4 +160,48 @@ void SerialHandler::OnMessageTimeout(){
         //I::msleep(5);
         QThread::msleep(5);
     }
+}
+
+void SerialHandler::WriteCommand(QStringList lst){
+    toSend.append(lst);
+    if(!inLoop) WriteMessage_loop();
+}
+void SerialHandler::WriteCommand(QString str){
+    toSend.append(str);
+    if(!inLoop) WriteMessage_loop();
+}
+
+void SerialHandler::WriteMessage_loop(){
+    if(toSend.count() > 0){
+        inLoop = true;
+        WriteChar('R');
+        QTimer::singleShot(2000, this, SLOT(OnMessageTimeout_loop()));
+    }else{
+        inLoop = false;
+    }
+}
+
+void SerialHandler::OnMessageTimeout_loop(){
+    double checksum = 0;
+    QByteArray array = toSend.at(0).toLocal8Bit();
+
+    for(int i = 0; i < array.length(); i++){
+        char a = array.at(i);
+        checksum += a;
+    }
+    checksum /= 8;
+    qDebug() << "QtTotalChecksum: " << checksum;
+    tempMessage.append("%");
+    tempMessage.append(QString::number(checksum, 'f', 2));
+    tempMessage.append("\n\r");
+
+    qDebug() << "Sent this whole string: " << tempMessage;
+    for(int i = 0; i < array.length(); i++){
+        WriteChar(array.at(i));
+        //I::msleep(5);
+        QThread::msleep(5);
+    }
+
+    toSend.removeAt(0);
+    QTimer::singleShot(5000, this, SLOT(WriteMessage_loop()));
 }
