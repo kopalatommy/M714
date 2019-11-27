@@ -100,7 +100,7 @@ to output</string>
     </rect>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="o3Concentration_2">
+  <widget class="QLCDNumber" name="noConcentration">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -110,7 +110,7 @@ to output</string>
     </rect>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="o3Concentration_3">
+  <widget class="QLCDNumber" name="no2Concentration">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -156,7 +156,7 @@ to output</string>
     <string>-</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="increaseNOButton_2">
+  <widget class="QPushButton" name="increaseOzoneButton">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -174,7 +174,7 @@ to output</string>
     <string>+</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="decreaseNOButton_2">
+  <widget class="QPushButton" name="decreaseOzoneButton">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -192,7 +192,7 @@ to output</string>
     <string>-</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="backButton">
+  <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -207,10 +207,10 @@ to output</string>
     </font>
    </property>
    <property name="text">
-    <string>Back</string>
+    <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="nextButton">
+  <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -225,7 +225,7 @@ to output</string>
     </font>
    </property>
    <property name="text">
-    <string>Next</string>
+    <string>Start</string>
    </property>
   </widget>
  </widget>

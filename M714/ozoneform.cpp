@@ -10,6 +10,8 @@ OzoneForm::OzoneForm(QWidget *parent) :
     connect(&outputOzone, &OutputOzoneForm::TimedOut, this, &OzoneForm::OutputTimeout);
     connect(&outputOzone, &OutputOzoneForm::ReceivedError, this, &OzoneForm::OutputError);
     connect(&outputOzone, &OutputOzoneForm::CloseAll, this, &QWidget::close);
+
+    ozoneSetting = Model714Settings::GetInstance()->GetOzoneOutput();
 }
 
 OzoneForm::~OzoneForm()
@@ -40,6 +42,7 @@ void OzoneForm::on_decreaseO3Button_clicked(){
 }
 
 void OzoneForm::on_startButton_clicked(){
+    Model714Settings::GetInstance()->SetOzoneOutput(ozoneSetting);
     outputOzone.show();
     outputOzone.StartSequence(ozoneSetting);
 }
@@ -50,14 +53,19 @@ void OzoneForm::on_cancelButton_clicked(){
 
 void OzoneForm::OutputTimeout(){
     QMessageBox msg;
-    msg.setText("ERROR: timeout");
+    msg.setText("ERROR: Timeout");
     msg.setStandardButtons(QMessageBox::StandardButton::Ok);
     msg.exec();
 }
 
 void OzoneForm::OutputError(){
     QMessageBox msg;
-    msg.setText("ERROR: received error");
+    msg.setText("ERROR: Received error");
     msg.setStandardButtons(QMessageBox::StandardButton::Ok);
     msg.exec();
+}
+
+void OzoneForm::showEvent(QShowEvent *event){
+    QWidget::showEvent(event);
+    ui->ozoneConcentration->display(static_cast<double>(ozoneSetting));
 }

@@ -7,6 +7,8 @@ NOForm::NOForm(QWidget *parent) :
 {
     ui->setupUi(this);
     SetupUI();
+
+    noSetting = Model714Settings::GetInstance()->GetNOOutput();
 }
 
 void NOForm::SetupUI(){
@@ -15,7 +17,7 @@ void NOForm::SetupUI(){
     ui->pleaseWaitLabel->hide();
     ui->titleBackground->setStyleSheet("background-color:yellow");
     //ui->widgetBottomBackground->setStyleSheet("background-color:white");
-    ui->nitricOxideConcentration->display(noSetting);
+    ui->nitricOxideConcentration->display(static_cast<double>(noSetting));
     ui->increaseNOButton->setAutoRepeat(true);
     ui->decreaseNOButton->setAutoRepeat(true);
     ui->increaseNOButton->setStyleSheet("background-color:lightgray;");
@@ -35,7 +37,7 @@ void NOForm::on_increaseNOButton_clicked(){
 
     if(noSetting > NO_MAXIMUM_VALUE || noSetting < 0) noSetting = 0;
 
-    ui->nitricOxideConcentration->display(noSetting);
+    ui->nitricOxideConcentration->display(static_cast<double>(noSetting));
 }
 
 void NOForm::on_decreaseNOButton_clicked(){
@@ -44,14 +46,35 @@ void NOForm::on_decreaseNOButton_clicked(){
 
     if(noSetting < 0) noSetting = NO_MAXIMUM_VALUE;
 
-    ui->nitricOxideConcentration->display(noSetting);
+    ui->nitricOxideConcentration->display(static_cast<double>(noSetting));
 }
 
 void NOForm::on_startButton_clicked(){
-    outputNO.SetNOSetting(noSetting);
+    //outputNO.SetNOSetting(static_cast<double>(noSetting));
+    Model714Settings::GetInstance()->SetNOOutput(noSetting);
+    outputNO.StartSequence(noSetting);
     outputNO.show();
 }
 
 void NOForm::on_cancelButton_clicked(){
     close();
+}
+
+void NOForm::OutputTimeout(){
+    QMessageBox msg;
+    msg.setText("ERROR: Timeout");
+    msg.setStandardButtons(QMessageBox::StandardButton::Ok);
+    msg.exec();
+}
+
+void NOForm::OutputError(){
+    QMessageBox msg;
+    msg.setText("ERROR: Received error");
+    msg.setStandardButtons(QMessageBox::StandardButton::Ok);
+    msg.exec();
+}
+
+void NOForm::showEvent(QShowEvent *event){
+    QWidget::showEvent(event);
+    ui->nitricOxideConcentration->display(static_cast<double>(noSetting));
 }

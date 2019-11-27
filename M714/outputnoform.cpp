@@ -7,8 +7,6 @@ OutputNOForm::OutputNOForm(QWidget *parent) :
 {
     ui->setupUi(this);
     SetUpUI();
-
-
 }
 
 OutputNOForm::~OutputNOForm()
@@ -40,56 +38,7 @@ void OutputNOForm::SetUpUI(){
     ui->quitButton->setEnabled(false);
 
     //QTimer::singleShot(6500, this, &OutputNOForm::OnDisableButtonTimeout);
-    QTimer::singleShot(6500, this, SLOT(OnDisableButtonTimeout()));
-}
-
-void OutputNOForm::OnDisableButtonTimeout(){
-    ui->quitButton->setEnabled(true);
-}
-
-void OutputNOForm::SetNOSetting(double val){
-    _NOSetting = val;
-
-    SerialHandler::GetInstance()->WriteSync("NIO" + QString::number(val));
-
-    connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
-
-    //QTimer::singleShot(timeoutMSec, this, &OutputNOForm::OnWaitTimeout);
-    QTimer::singleShot(timeoutMSec, this, SLOT(OnWaitTimeout));
-}
-
-void OutputNOForm::OnWaitTimeout(){
-    if(!ui->WaitLabel->isHidden()){
-        ui->WaitLabel->setHidden(true);
-        qDebug() << "Output NO timed out";
-    }
-}
-
-void OutputNOForm::on_DiagLeft_clicked(){
-    _diagIndex--;
-    if(_diagIndex < 0) _diagIndex = 16;
-
-    UpdateDiagLabel();
-}
-
-void OutputNOForm::on_DiagRight_clicked(){
-    _diagIndex++;
-    if(_diagIndex > 16) _diagIndex = 0;
-
-    UpdateDiagLabel();
-}
-
-void OutputNOForm::UpdateDiagLabel(){
-    ui->diagLabel->setText(Model714Data::GetInstance()->GetDiagnosticString(_diagIndex));
-}
-
-void OutputNOForm::on_quitButton_clicked(){
-    close();
-}
-
-void OutputNOForm::UpdateStatusLabels(){
-    UpdateStatusCircles();
-    UpdateDiagLabel();
+    QTimer::singleShot(6500, this, SLOT(OnDisableButtonsTimeout()));
 }
 
 void OutputNOForm::UpdateStatusCircles(){
@@ -124,6 +73,46 @@ void OutputNOForm::UpdateStatusCircles(){
     }
 }
 
+void OutputNOForm::UpdateDiagLabel(){
+    ui->diagLabel->setText(Model714Data::GetInstance()->GetDiagnosticString(_diagIndex));
+}
+
+void OutputNOForm::UpdateStatusValues(){
+    UpdateStatusCircles();
+    UpdateDiagLabel();
+}
+
+void OutputNOForm::StartSequence(float val){
+    ui->blockingLabel->show();
+    SerialHandler::GetInstance()->WriteMessage("NIO," + QString::number(static_cast<double>(val)));
+    connect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
+
+    QTimer::singleShot(timeoutMSec, this, SLOT(CloseWaitLabel()));
+}
+
 void OutputNOForm::ReceivedAck(){
-    ui->WaitLabel->setHidden(false);
+    ui->blockingLabel->hide();
+    disconnect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
+}
+
+void OutputNOForm::CloseWaitLabel(){
+    if(!ui->blockingLabel->isHidden()){
+        disconnect(SerialHandler::GetInstance(), &SerialHandler::ReceivedAck, this, &OutputNOForm::ReceivedAck);
+        SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+        qDebug() << "Failed to close blocking label. Current timeout is " << timeoutMSec << " msecs";
+        ui->blockingLabel->hide();
+        close();
+        emit TimedOut();
+    }
+}
+
+void OutputNOForm::OnDisableButtonsTimeout(){
+    ui->quitButton->setEnabled(true);
+
+}
+
+void OutputNOForm::on_quitButton_clicked(){
+    SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+    emit CloseAll();
+    close();
 }

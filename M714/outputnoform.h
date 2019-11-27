@@ -7,6 +7,7 @@
 #include <QtMath>
 
 #include "model714data.h"
+#include "model714settings.h"
 #include "serialhandler.h"
 
 namespace Ui {
@@ -18,25 +19,24 @@ class OutputNOForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit OutputNOForm(QWidget *parent = nullptr);
+    explicit OutputNOForm(QWidget * parent = nullptr);
     ~OutputNOForm();
 
-    void SetNOSetting(double val);
+    //void SetNOSetting(double val);
+    void StartSequence(float val);
 
-public slots:
-    void UpdateStatusLabels();
+signals:
+    void TimedOut();
+    void ReceivedError();
+    void CloseAll();
 
 private slots:
-    void on_DiagLeft_clicked();
-    void on_DiagRight_clicked();
+    void CloseWaitLabel();
+    void ReceivedAck();
+    void UpdateStatusValues();
+    void OnDisableButtonsTimeout();
 
     void on_quitButton_clicked();
-
-    void OnDisableButtonTimeout();
-
-    void OnWaitTimeout();
-
-    void ReceivedAck();
 
 private:
     Ui::OutputNOForm *ui;

@@ -3,9 +3,11 @@
 
 #include <QWidget>
 #include <QDebug>
+#include <QMessageBox>
 
 #include "model714data.h"
 #include "serialhandler.h"
+#include "model714settings.h"
 
 #include "outputnoform.h"
 
@@ -30,14 +32,17 @@ private slots:
     void on_startButton_clicked();
     void on_cancelButton_clicked();
 
+    void OutputTimeout();
+    void OutputError();
+
 private:
     Ui::NOForm *ui;
 
-    double noSetting = 0;
-
     OutputNOForm outputNO;
+    float noSetting = 0;
 
     void SetupUI();
+    void showEvent(QShowEvent * event);
 };
 
 #endif // NOFORM_H

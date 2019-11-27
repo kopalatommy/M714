@@ -21,7 +21,7 @@ public:
     static SerialHandler * GetInstance();
 
 public slots:
-    void WriteSync(QString data);
+    //void WriteSync(QString data);
     void WriteChar(char c);
     void WriteMessage(QString data);
 

@@ -6,6 +6,7 @@
 #include <QMessageBox>
 
 #include "outputozoneform.h"
+#include "model714settings.h"
 
 #define OZONE_MAXIMUM_VALUE 2000
 
@@ -35,9 +36,9 @@ private:
     Ui::OzoneForm *ui;
 
     OutputOzoneForm outputOzone;
-
     float ozoneSetting = 0;
-    bool okToClose = false;
+
+    void showEvent(QShowEvent * event);
 };
 
 #endif // OZONEFORM_H

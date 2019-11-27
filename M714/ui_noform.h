@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'noform.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.2
+** Created by: Qt User Interface Compiler version 5.12.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,10 +10,7 @@
 #define UI_NOFORM_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -36,45 +33,45 @@ public:
     void setupUi(QWidget *NOForm)
     {
         if (NOForm->objectName().isEmpty())
-            NOForm->setObjectName(QStringLiteral("NOForm"));
+            NOForm->setObjectName(QString::fromUtf8("NOForm"));
         NOForm->resize(480, 277);
         NOForm->setMinimumSize(QSize(480, 277));
         NOForm->setMaximumSize(QSize(480, 277));
         titleBackground = new QWidget(NOForm);
-        titleBackground->setObjectName(QStringLiteral("titleBackground"));
+        titleBackground->setObjectName(QString::fromUtf8("titleBackground"));
         titleBackground->setGeometry(QRect(0, 0, 481, 50));
         label = new QLabel(titleBackground);
-        label->setObjectName(QStringLiteral("label"));
+        label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(4, 5, 481, 41));
         QFont font;
         font.setPointSize(15);
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
         increaseNOButton = new QPushButton(NOForm);
-        increaseNOButton->setObjectName(QStringLiteral("increaseNOButton"));
+        increaseNOButton->setObjectName(QString::fromUtf8("increaseNOButton"));
         increaseNOButton->setGeometry(QRect(300, 90, 41, 41));
         QFont font1;
         font1.setPointSize(20);
         increaseNOButton->setFont(font1);
         decreaseNOButton = new QPushButton(NOForm);
-        decreaseNOButton->setObjectName(QStringLiteral("decreaseNOButton"));
+        decreaseNOButton->setObjectName(QString::fromUtf8("decreaseNOButton"));
         decreaseNOButton->setGeometry(QRect(300, 150, 41, 41));
         QFont font2;
         font2.setPointSize(30);
         decreaseNOButton->setFont(font2);
         nitricOxideConcentration = new QLCDNumber(NOForm);
-        nitricOxideConcentration->setObjectName(QStringLiteral("nitricOxideConcentration"));
+        nitricOxideConcentration->setObjectName(QString::fromUtf8("nitricOxideConcentration"));
         nitricOxideConcentration->setGeometry(QRect(150, 110, 120, 60));
         cancelButton = new QPushButton(NOForm);
-        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
         cancelButton->setGeometry(QRect(150, 220, 91, 31));
         cancelButton->setFont(font);
         startButton = new QPushButton(NOForm);
-        startButton->setObjectName(QStringLiteral("startButton"));
+        startButton->setObjectName(QString::fromUtf8("startButton"));
         startButton->setGeometry(QRect(250, 220, 91, 31));
         startButton->setFont(font);
         pleaseWaitLabel = new QLabel(NOForm);
-        pleaseWaitLabel->setObjectName(QStringLiteral("pleaseWaitLabel"));
+        pleaseWaitLabel->setObjectName(QString::fromUtf8("pleaseWaitLabel"));
         pleaseWaitLabel->setGeometry(QRect(0, 0, 481, 281));
 
         retranslateUi(NOForm);
@@ -84,12 +81,12 @@ public:
 
     void retranslateUi(QWidget *NOForm)
     {
-        NOForm->setWindowTitle(QApplication::translate("NOForm", "Form", 0));
-        label->setText(QApplication::translate("NOForm", "Select NO Concentration to Ouput", 0));
-        increaseNOButton->setText(QApplication::translate("NOForm", "+", 0));
-        decreaseNOButton->setText(QApplication::translate("NOForm", "-", 0));
-        cancelButton->setText(QApplication::translate("NOForm", "Cancel", 0));
-        startButton->setText(QApplication::translate("NOForm", "Start", 0));
+        NOForm->setWindowTitle(QApplication::translate("NOForm", "Form", nullptr));
+        label->setText(QApplication::translate("NOForm", "Select NO Concentration to Ouput", nullptr));
+        increaseNOButton->setText(QApplication::translate("NOForm", "+", nullptr));
+        decreaseNOButton->setText(QApplication::translate("NOForm", "-", nullptr));
+        cancelButton->setText(QApplication::translate("NOForm", "Cancel", nullptr));
+        startButton->setText(QApplication::translate("NOForm", "Start", nullptr));
         pleaseWaitLabel->setText(QString());
     } // retranslateUi
 

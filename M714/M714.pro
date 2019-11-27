@@ -28,8 +28,10 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         model714data.cpp \
+        model714settings.cpp \
         no2form.cpp \
         noform.cpp \
+        outputno2form.cpp \
         outputnoform.cpp \
         outputozoneform.cpp \
         ozoneform.cpp \
@@ -39,8 +41,10 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
         model714data.h \
+        model714settings.h \
         no2form.h \
         noform.h \
+        outputno2form.h \
         outputnoform.h \
         outputozoneform.h \
         ozoneform.h \
@@ -51,6 +55,7 @@ FORMS += \
         mainwindow.ui \
         no2form.ui \
         noform.ui \
+        outputno2form.ui \
         outputnoform.ui \
         outputozoneform.ui \
         ozoneform.ui \

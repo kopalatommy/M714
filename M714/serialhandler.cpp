@@ -108,11 +108,11 @@ bool SerialHandler::ParseDataLine(QString dataLine){
 }*/
 
 void SerialHandler::WriteChar(char c){
-    qDebug() << "Writing char: " << c;
+    //qDebug() << "Writing char: " << c;
     serialPort.write(QByteArray().append(c));
 }
 
-void SerialHandler::WriteSync(QString data){
+/*void SerialHandler::WriteSync(QString data){
     QByteArray array = data.toLocal8Bit();
     double checksum = 0;
 
@@ -130,9 +130,11 @@ void SerialHandler::WriteSync(QString data){
         QThread::msleep(5);
     }
     //serialPort.write(data.toLocal8Bit().constData(), data.length());
-}
+}*/
 
 void SerialHandler::WriteMessage(QString data){
+    qDebug() << "Writing message: " << data;
+
     WriteChar('R');
     tempMessage = data;
     QTimer::singleShot(2000, this, SLOT(OnMessageTimeout()));
