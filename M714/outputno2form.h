@@ -31,6 +31,7 @@ signals:
 
 private slots:
     void OnDisableButtonsTimerEnd();
+    void OnWaitLabelTimeoutEnd();
 
     void on_quitButton_clicked();
 
@@ -51,6 +52,7 @@ private:
     QPixmap iGreenPixmap = QPixmap(":/pictures/pics/iGreen.png");
 
     int diagnosticIndex = 0;
+    int timeoutMSec = 10000;
 
     void SetupUI();
     void UpdateDiagnosticLabel();

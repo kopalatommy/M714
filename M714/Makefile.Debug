@@ -307,7 +307,10 @@ debug\moc_mainwindow.cpp: mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		model714settings.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QFile \
-		noform.h \
+		outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
 		serialhandler.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
@@ -315,9 +318,7 @@ debug\moc_mainwindow.cpp: mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		noform.h \
 		outputnoform.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QtMath \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qmath.h \
@@ -617,6 +618,17 @@ debug\moc_no2form.cpp: no2form.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qdatetime.h \
 		model714settings.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QFile \
+		outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		serialhandler.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialport.h \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.3\msvc2017\bin\moc.exe
 	C:\Qt\5.12.3\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/_Work/714/UI/M714/M714/debug/moc_predefs.h -IC:/Qt/5.12.3/msvc2017/mkspecs/win32-msvc -ID:/_Work/714/UI/M714/M714 -IC:/Qt/5.12.3/msvc2017/include -IC:/Qt/5.12.3/msvc2017/include/QtWidgets -IC:/Qt/5.12.3/msvc2017/include/QtGui -IC:/Qt/5.12.3/msvc2017/include/QtANGLE -IC:/Qt/5.12.3/msvc2017/include/QtSerialPort -IC:/Qt/5.12.3/msvc2017/include/QtNetwork -IC:/Qt/5.12.3/msvc2017/include/QtXml -IC:/Qt/5.12.3/msvc2017/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" no2form.h -o debug\moc_no2form.cpp
@@ -859,6 +871,16 @@ debug\moc_outputno2form.cpp: outputno2form.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		model714data.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QDateTime \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qdatetime.h \
+		serialhandler.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialport.h \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.12.3\msvc2017\bin\moc.exe
 	C:\Qt\5.12.3\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/_Work/714/UI/M714/M714/debug/moc_predefs.h -IC:/Qt/5.12.3/msvc2017/mkspecs/win32-msvc -ID:/_Work/714/UI/M714/M714 -IC:/Qt/5.12.3/msvc2017/include -IC:/Qt/5.12.3/msvc2017/include/QtWidgets -IC:/Qt/5.12.3/msvc2017/include/QtGui -IC:/Qt/5.12.3/msvc2017/include/QtANGLE -IC:/Qt/5.12.3/msvc2017/include/QtSerialPort -IC:/Qt/5.12.3/msvc2017/include/QtNetwork -IC:/Qt/5.12.3/msvc2017/include/QtXml -IC:/Qt/5.12.3/msvc2017/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" outputno2form.h -o debug\moc_outputno2form.cpp
@@ -1784,7 +1806,10 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		model714settings.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QFile \
-		noform.h \
+		outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
 		serialhandler.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
@@ -1792,9 +1817,7 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		noform.h \
 		outputnoform.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QtMath \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qmath.h \
@@ -2102,7 +2125,10 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QWidget \
 		model714settings.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QFile \
-		noform.h \
+		outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
 		serialhandler.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
@@ -2110,9 +2136,7 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
-		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		noform.h \
 		outputnoform.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QtMath \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qmath.h \
@@ -2561,6 +2585,17 @@ debug\no2form.obj: no2form.cpp no2form.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qdatetime.h \
 		model714settings.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QFile \
+		outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
+		serialhandler.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialport.h \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
 		ui_no2form.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QVariant \
 		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QApplication \
@@ -2835,7 +2870,32 @@ debug\outputno2form.obj: outputno2form.cpp outputno2form.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\QTimer \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qtimer.h \
 		C:\Qt\5.12.3\msvc2017\include\QtCore\qbasictimer.h \
-		ui_outputno2form.h
+		model714data.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QDateTime \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qdatetime.h \
+		serialhandler.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QObject \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\QSerialPort \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialport.h \
+		C:\Qt\5.12.3\msvc2017\include\QtSerialPort\qserialportglobal.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QThread \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qthread.h \
+		ui_outputno2form.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\QVariant \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QApplication \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.3\msvc2017\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.3\msvc2017\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.3\msvc2017\include\QtGui\qinputmethod.h \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QLabel \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qlabel.h \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\5.12.3\msvc2017\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\5.12.3\msvc2017\include\QtGui\qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\outputno2form.obj outputno2form.cpp
 
 debug\outputnoform.obj: outputnoform.cpp outputnoform.h \

@@ -4,8 +4,8 @@
 #include <QDebug>
 #include <QFile>
 
-#define FILENAME "/home/2b/Model714Settings.txt"
-//#define FILENAME "D:/Work/Model714Setting.txt"
+//#define FILENAME "/home/2b/Model714Settings.txt"
+#define FILENAME "D:/Work/Model714Setting.txt"
 
 #define OzoneMarker 'A'
 #define NOMarker 'B'

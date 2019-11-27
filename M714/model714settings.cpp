@@ -36,6 +36,7 @@ double Model714Settings::GetOzoneOutputNO2(){
 }
 
 void Model714Settings::SetOzoneOutputNO2(double d){
+    //qDebug() << "Received new ozone value for no2: " << d;
     ozoneOutputNO2 = d;
     WriteSettingsFile();
 }
@@ -45,6 +46,7 @@ double Model714Settings::GetNOOutputNO2(){
 }
 
 void Model714Settings::SetNOOutputNO2(double d){
+    //qDebug() << "Received new NO value for no2: " << d;
     noOutputNO2 = d;
     WriteSettingsFile();
 }
@@ -63,22 +65,22 @@ void Model714Settings::ReadSettingsFile(){
                 case OzoneMarker:
                     temp.remove(0, 1);
                     ozoneOutput = QString(temp).toDouble();
-                    qDebug() << "Read in ozone output: " << ozoneOutput;
+                    //qDebug() << "Read in ozone output: " << ozoneOutput;
                     break;
                 case NOMarker:
                     temp.remove(0, 1);
                     noOutput = QString(temp).toDouble();
-                    qDebug() << "Read in no output: " << noOutput;
+                    //qDebug() << "Read in no output: " << noOutput;
                     break;
                 case OzoneMarker_no2:
                     temp.remove(0, 1);
                     ozoneOutputNO2 = QString(temp).toDouble();
-                    qDebug() << "Read in ozone no2 output: " << ozoneOutputNO2;
+                    //qDebug() << "Read in ozone no2 output: " << ozoneOutputNO2;
                     break;
                 case NOMarker_no2:
                     temp.remove(0, 1);
-                    ozoneOutputNO2 = QString(temp).toDouble();
-                    qDebug() << "Read in no no2 output: " << noOutputNO2;
+                    noOutputNO2 = QString(temp).toDouble();
+                    //qDebug() << "Read in no no2 output: " << noOutputNO2;
                     break;
                 default:
                     qDebug() << "Read in: " << temp;
@@ -97,7 +99,6 @@ void Model714Settings::ReadSettingsFile(){
 
 void Model714Settings::WriteSettingsFile(){
     QFile file(QString(FILENAME));
-
     if(file.open(QIODevice::WriteOnly)){
         file.write(QString(OzoneMarker).append(QString::number(ozoneOutput)).toLocal8Bit());
         file.write("\n");

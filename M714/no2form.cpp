@@ -29,9 +29,7 @@ void NO2Form::on_increaseNOButton_clicked(){
     if(noSetting > NO_MAXIMUM_VALUE_NO2 || noSetting < 0){
         noSetting = 0;
     }
-    ui->noConcentration->display(noSetting);
     CalculateTitration();
-    ui->no2Concentration->display(no2Setting);
 }
 
 void NO2Form::on_decreaseNOButton_clicked(){
@@ -42,9 +40,7 @@ void NO2Form::on_decreaseNOButton_clicked(){
     if(noSetting < 0){
         noSetting = NO_MAXIMUM_VALUE_NO2;
     }
-    ui->noConcentration->display(noSetting);
     CalculateTitration();
-    ui->no2Concentration->display(no2Setting);
 }
 
 void NO2Form::on_increaseOzoneButton_clicked(){
@@ -55,10 +51,7 @@ void NO2Form::on_increaseOzoneButton_clicked(){
     if(ozoneSetting > OZONE_MAXIMUM_VALUE_NO2 || ozoneSetting < 0){
         ozoneSetting = 0;
     }
-    ui->o3Concentration->display(ozoneSetting);
     CalculateTitration();
-    ui->noConcentration->display(noSetting);
-    ui->no2Concentration->display(no2Setting);
 }
 
 void NO2Form::on_decreaseOzoneButton_clicked(){
@@ -69,10 +62,7 @@ void NO2Form::on_decreaseOzoneButton_clicked(){
     if(ozoneSetting < 0){
         ozoneSetting = OZONE_MAXIMUM_VALUE_NO2;
     }
-    ui->o3Concentration->display(ozoneSetting);
     CalculateTitration();
-    ui->noConcentration->display(noSetting);
-    ui->no2Concentration->display(no2Setting);
 }
 
 void NO2Form::on_startButton_clicked(){
@@ -89,14 +79,14 @@ void NO2Form::on_cancelButton_clicked(){
 
 void NO2Form::OutputError(){
     QMessageBox msg;
-    msg.setText("ERROR: Timeout");
+    msg.setText("ERROR: Received error");
     msg.setStandardButtons(QMessageBox::StandardButton::Ok);
     msg.exec();
 }
 
 void NO2Form::OutputTimeout(){
     QMessageBox msg;
-    msg.setText("ERROR: Received error");
+    msg.setText("ERROR: Timeout");
     msg.setStandardButtons(QMessageBox::StandardButton::Ok);
     msg.exec();
 }
@@ -106,6 +96,10 @@ void NO2Form::CalculateTitration(){
         noSetting = 2 * ozoneSetting;
     }
     no2Setting = ozoneSetting;
+
+    ui->o3Concentration->display(ozoneSetting);
+    ui->noConcentration->display(noSetting);
+    ui->no2Concentration->display(no2Setting);
 }
 
 void NO2Form::showEvent(QShowEvent *event){

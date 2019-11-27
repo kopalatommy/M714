@@ -40,6 +40,7 @@ public:
     QPushButton *scrollLeftButton;
     QLabel *diagnosticData;
     QWidget *TitleBackground;
+    QLabel *blockingLabel;
 
     void setupUi(QWidget *OutputNO2Form)
     {
@@ -167,6 +168,10 @@ public:
         TitleBackground = new QWidget(OutputNO2Form);
         TitleBackground->setObjectName(QString::fromUtf8("TitleBackground"));
         TitleBackground->setGeometry(QRect(0, 0, 481, 51));
+        blockingLabel = new QLabel(OutputNO2Form);
+        blockingLabel->setObjectName(QString::fromUtf8("blockingLabel"));
+        blockingLabel->setGeometry(QRect(0, 0, 481, 281));
+        blockingLabel->setPixmap(QPixmap(QString::fromUtf8(":/Resources/hourGlassPleaseWait.png")));
         TitleBackground->raise();
         Title->raise();
         NO2ValueLabel->raise();
@@ -187,6 +192,7 @@ public:
         scrollRightButton->raise();
         scrollLeftButton->raise();
         diagnosticData->raise();
+        blockingLabel->raise();
 
         retranslateUi(OutputNO2Form);
 
@@ -215,6 +221,7 @@ public:
         scrollRightButton->setText(QApplication::translate("OutputNO2Form", ">", nullptr));
         scrollLeftButton->setText(QApplication::translate("OutputNO2Form", "<", nullptr));
         diagnosticData->setText(QApplication::translate("OutputNO2Form", "Diagnostics", nullptr));
+        blockingLabel->setText(QString());
     } // retranslateUi
 
 };

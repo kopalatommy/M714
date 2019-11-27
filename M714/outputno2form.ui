@@ -520,6 +520,22 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="blockingLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>481</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resource.qrc">:/Resources/hourGlassPleaseWait.png</pixmap>
+   </property>
+  </widget>
   <zorder>TitleBackground</zorder>
   <zorder>Title</zorder>
   <zorder>NO2ValueLabel</zorder>
@@ -540,7 +556,10 @@
   <zorder>scrollRightButton</zorder>
   <zorder>scrollLeftButton</zorder>
   <zorder>diagnosticData</zorder>
+  <zorder>blockingLabel</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

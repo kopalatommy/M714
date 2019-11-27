@@ -28,16 +28,31 @@ void OutputNO2Form::OnDisableButtonsTimerEnd(){
     ui->quitButton->setEnabled(true);
 }
 
+void OutputNO2Form::OnWaitLabelTimeoutEnd(){
+    if(!ui->blockingLabel->isHidden()){
+        SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+        qDebug() << "Failed to close blocking label. Current timeout is " << timeoutMSec << " msecs";
+        ui->blockingLabel->hide();
+        close();
+        emit TimedOut();
+    }
+}
+
 void OutputNO2Form::StartSequence(double noSetting, double ozoneSetting, double no2Setting){
     int noValue = static_cast<int>(noSetting) - static_cast<int>(ozoneSetting);
 
     ui->NOValueLabel->setText(QString::number(noValue));
     ui->NO2ValueLabel->setText(QString::number(no2Setting));
+
+    ui->blockingLabel->setHidden(false);
+
+    QTimer::singleShot(timeoutMSec, this, SLOT(OnWaitLabelTimeoutEnd()));
 }
 
 void OutputNO2Form::on_quitButton_clicked(){
     emit CloseAll();
     SerialHandler::GetInstance()->WriteMessage("IDL,0000");
+    close();
 }
 
 void OutputNO2Form::on_scrollLeftButton_clicked(){
