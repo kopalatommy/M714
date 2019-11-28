@@ -38,6 +38,8 @@ private slots:
     void on_scrollLeftButton_clicked();
     void on_scrollRightButton_clicked();
 
+    void OnAckReceived();
+
 private:
     Ui::OutputNO2Form *ui;
 

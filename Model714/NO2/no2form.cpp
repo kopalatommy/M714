@@ -69,7 +69,7 @@ void NO2Form::on_startButton_clicked(){
     Model714Settings::GetInstance()->SetNOOutputNO2(noSetting);
     Model714Settings::GetInstance()->SetOzoneOutputNO2(ozoneSetting);
 
-    outputNO2.StartSequence(noSetting, noSetting, no2Setting);
+    outputNO2.StartSequence(noSetting, ozoneSetting, no2Setting);
     outputNO2.show();
 }
 
