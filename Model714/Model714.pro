@@ -31,6 +31,9 @@ SOURCES += \
         NO2/outputno2form.cpp \
         Ozone/outputozoneform.cpp \
         Ozone/ozoneform.cpp \
+        Settings/NO/highnocalform.cpp \
+        Settings/NO/lownocalform.cpp \
+        Settings/NO/nocalform.cpp \
         Settings/settingsform.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -45,6 +48,9 @@ HEADERS += \
         NO2/outputno2form.h \
         Ozone/outputozoneform.h \
         Ozone/ozoneform.h \
+        Settings/NO/highnocalform.h \
+        Settings/NO/lownocalform.h \
+        Settings/NO/nocalform.h \
         Settings/settingsform.h \
         mainwindow.h \
         model714data.h \
@@ -58,6 +64,9 @@ FORMS += \
         NO2/outputno2form.ui \
         Ozone/outputozoneform.ui \
         Ozone/ozoneform.ui \
+        Settings/NO/highnocalform.ui \
+        Settings/NO/lownocalform.ui \
+        Settings/NO/nocalform.ui \
         Settings/settingsform.ui \
         mainwindow.ui
 
